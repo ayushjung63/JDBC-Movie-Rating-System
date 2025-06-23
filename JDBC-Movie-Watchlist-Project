@@ -1,0 +1,14 @@
+Movie:
+Movie name
+Genre (e.g., Action, Comedy, Drama)
+Rating (from 1 to 10) — optional if not watched yet
+Watched status (Yes/No)
+
+1. Add Movie
+2. View All Movies
+3. Update Movie
+4. Delete Movie
+Press q to Exit
+
+1 -> Add Movie
+2 -> View All Movies
