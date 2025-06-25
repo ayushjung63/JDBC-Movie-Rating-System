@@ -1,22 +1,13 @@
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.Scanner;
 
 public class JdbcMain {
-    public static void main(String[] args) {
-//            String host = "localhost";
-//            String port = "5432";
-//            String username = "postgres";
-//            String password = "postgres";
-//            String myDatabaseName = "movie_db";
-//
-//            String url="jdbc:postgresql://"+host+":"+port+"/"+myDatabaseName;
-//
-//        System.out.println("Hello World");
-//    }
 
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String choice;
-        JdbcMain movieHandler=new JdbcMain();
+        MovieService movieService=new MovieService();
 
         do {
             printMenu();
@@ -26,15 +17,25 @@ public class JdbcMain {
             switch (choice) {
                 case "1":
                     System.out.println("Selected: Add a Movie");
+                    // take movie from users using command line
+                    Movie movie=new Movie("Tare Zammen Par","Drama",9,false);
+                    movieService.saveMovie(movie);
                     break;
                 case "2":
                     System.out.println("Selected: Show all Movies");
+                    movieService.fetchAllMovies();
                     break;
                 case "3":
                     System.out.println("Selected: Update Movie");
+                    // take id and rating from user using command line scanner
+                    int id=5;
+                    int rating=10;
+                    movieService.updateRating(id,rating);
                     break;
                 case "4":
                     System.out.println("Selected: Delete Movie");
+                    int movieToDeleteId=3;
+                    movieService.deleteRating(movieToDeleteId);
                     break;
                 case "q":
                 case "Q":
@@ -55,7 +56,7 @@ public class JdbcMain {
         System.out.println("==== Movie Management ====");
         System.out.println("1. Add Movie");
         System.out.println("2. View All Movies");
-        System.out.println("3. Update Movie");
+        System.out.println("3. Update Movie Rating");
         System.out.println("4. Delete Movie");
         System.out.println("Press 'q' to Exit");
     }
@@ -89,4 +90,5 @@ public class JdbcMain {
 //            e.printStackTrace();
 //        }
 //    }
+
 }
